@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faAsterisk } from '@fortawesome/free-solid-svg-icons';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/Task';
 
@@ -24,4 +25,8 @@ export class TasksComponent implements OnInit {
     });
   }
 
+  toggleReminder(task: Task) {
+    task.reminder = !task.reminder;
+    this.taskService.updateTaskReminder(task).subscribe();
+  }
 }
